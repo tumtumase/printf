@@ -1,4 +1,6 @@
 #include "main.h"
+#include <unistd.h>
+#include <stdarg.h>
 
 /**
  * handle_char - Handles the 'c' format specifier
@@ -7,7 +9,7 @@
  */
 int handle_char(va_list args)
 {
-	char c = va_arg(args, int);
+	char c = (char) va_arg(args, int); /* Cast int to char */
 
 	write(1, &c, 1);
 	return (1);
@@ -47,7 +49,6 @@ int handle_percent(void)
 /**
  * _printf - Produces output according to a format
  * @format: Character string containing zero or more directives
- *
  * Return: The number of characters printed (excluding the null byte)
  */
 int _printf(const char *format, ...)
